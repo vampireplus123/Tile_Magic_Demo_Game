@@ -1,7 +1,7 @@
 
 ## Hướng dẫn sử dụng
 
-1. **Mở project bằng Unity** (phiên bản 2020.x hoặc mới hơn được khuyến nghị).
+1. **Mở project bằng Unity** (phiên bản 2021.3.x hoặc mới hơn được khuyến nghị).
 2. **Chuẩn bị scene chính**:
     - Thêm các `SpawnPoint` để tile có thể xuất hiện.
     - Kéo `TileManager` và gán `tilePrefab`, cấu hình số lượng pool.
