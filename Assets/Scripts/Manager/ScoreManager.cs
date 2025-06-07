@@ -1,84 +1,63 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
-    [Header("Thresholds for Reaction Time")]
-    public float perfectThreshold = 0.2f; // Thời gian dưới 0.5 giây => Perfect
-    public float goodThreshold = 0.5f;     // Thời gian dưới 1 giây => Good
+    [Header("Reaction Time Thresholds")]
+    public float perfectThreshold = 1.2f;
+    public float goodThreshold = 1.5f;
 
-    private int score = 0;  // Điểm số hiện tại
+    private int score = 0;
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
 
-    /// <summary>
-/// Tính điểm dựa trên thời gian phản ứng
-/// </summary>
-/// <param name="reactionTime">Thời gian phản ứng (giây)</param>
-/// <returns>Số điểm tương ứng</returns>
-    private int CalculateScore(float reactionTime)
+    public void AddScore(int basePoint, float reactionTime)
     {
-        if (reactionTime <= perfectThreshold)
-        {
-            return 10; // Điểm tối đa cho phản ứng nhanh
-        }
-        else if (reactionTime <= goodThreshold)
-        {
-            return 5; // Điểm trung bình cho phản ứng vừa phải
-        }
-        else
-        {
-            return 1; // Điểm tối thiểu cho phản ứng chậm
-        }
+        float multiplier = GetMultiplier(reactionTime);
+        int totalPoint = Mathf.RoundToInt(basePoint * multiplier);
+        score += totalPoint;
+
+        // UIManager.Instance.UpdateScore(score);
+        // UIManager.Instance.ShowFeedback(GetFeedback(multiplier));
+
+        Debug.Log($"Reaction Time: {reactionTime}, Base Point: {basePoint}, Multiplier: {multiplier}, Total: {totalPoint}, New Score: {score}");
     }
-    //Thêm điểm
-   public void AddScore(float reactionTime, bool isCorrectTile)
+
+    private float GetMultiplier(float reactionTime)
     {
-        if (!isCorrectTile)
-        {
-            Debug.Log("Missed! No points awarded.");
-            UIManager.Instance.ShowFeedback("Miss!"); // Thông báo người chơi nhấn sai
-            return; // Nếu không đúng ô, không thưởng điểm
-        }
-
-        // Tính điểm dựa trên thời gian phản ứng
-        int points = CalculateScore(reactionTime);
-
-        // Cập nhật điểm
-        score += points;
-
-        // Xác định thông báo phản hồi dựa trên số điểm
-        string feedbackMessage = points == 10 ? "Perfect!" :
-                                points == 5 ? "Good!" :
-                                "Nice!";
-
-        // Cập nhật giao diện người dùng
-        UIManager.Instance.UpdateScore(score);
-        UIManager.Instance.ShowFeedback(feedbackMessage);
-
-        // Debug để kiểm tra logic
-        Debug.Log($"Reaction Time: {reactionTime}, Points Awarded: {points}, New Score: {score}");
+        if (reactionTime <= perfectThreshold) return 2f;
+        if (reactionTime <= goodThreshold) return 1.5f;
+        return 1f;
     }
-  // Lấy điểm
+
+    private string GetFeedback(float multiplier)
+    {
+
+        switch (multiplier)
+        {
+            case 2f:
+                return "Perfect";
+            case 1.5f:
+                return "Good!";
+            default:
+                return "Nice!";
+        }
+    }
+
     public int GetScore()
     {
         return score;
     }
-    //Reset lại điểm
+
     public void ResetScore()
     {
         score = 0;
-        UIManager.Instance.UpdateScore(score); // Đảm bảo UI cũng được cập nhật
+        UIManager.Instance.UpdateScore(score);
     }
 }

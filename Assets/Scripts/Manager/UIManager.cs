@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         score = 0;
         UpdateSlider();
         ResetCheckpointStars(); // Đặt lại ngôi sao
-        GameController.Instance.StartGame();
+        // GameController.Instance.StartGame();
     }
     //Thay đổi điểm
     public void UpdateScore(int value)
