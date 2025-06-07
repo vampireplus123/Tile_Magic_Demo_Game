@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2588691352539630610}
   - component: {fileID: 4490412822095193730}
-  - component: {fileID: 1057424339}
   - component: {fileID: 1057424336}
+  - component: {fileID: 1916772633}
+  - component: {fileID: 1916772632}
   m_Layer: 0
   m_Name: Short Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6af37355461f3488ca6e1fa84e0ad866, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -86,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &1057424339
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823053564987974719}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.65, y: 4.24, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1057424336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +104,53 @@ MonoBehaviour:
   NewSprite: {fileID: 21300000, guid: 8ddf93ea76ee345b4acddcb60444b700, type: 3}
   shakeIntensity: 0.1
   shakeDuration: 0.2
-  fallSpeed: 5
-  ParticleObject: {fileID: 7766480988985661079, guid: ef939b2cb50fd4554a41b984e61cc220, type: 3}
+  fallSpeed: 0.2
+  ParticleObject: {fileID: 7766480988985661073, guid: ef939b2cb50fd4554a41b984e61cc220, type: 3}
   Point: 10
+--- !u!50 &1916772633
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823053564987974719}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1916772632
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823053564987974719}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.65, y: 4.24}
+    newSize: {x: 2.65, y: 4.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.65, y: 4.24}
+  m_EdgeRadius: 0

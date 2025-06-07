@@ -22,11 +22,10 @@ public class ScoreManager : MonoBehaviour
         float multiplier = GetMultiplier(reactionTime);
         int totalPoint = Mathf.RoundToInt(basePoint * multiplier);
         score += totalPoint;
-
+        Debug.Log($"Reaction Time: {reactionTime}, Base Point: {basePoint}, Multiplier: {multiplier}, Total: {totalPoint}, New Score: {score}");
         // UIManager.Instance.UpdateScore(score);
         // UIManager.Instance.ShowFeedback(GetFeedback(multiplier));
 
-        Debug.Log($"Reaction Time: {reactionTime}, Base Point: {basePoint}, Multiplier: {multiplier}, Total: {totalPoint}, New Score: {score}");
     }
 
     private float GetMultiplier(float reactionTime)

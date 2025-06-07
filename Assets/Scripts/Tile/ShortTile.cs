@@ -25,7 +25,7 @@ public class ShortTile : TileBase, ITilePoint
 
     void OnMouseDown()
     {
-        if (isTouched) return;
+        if (isTouched) { return; }
 
         isTouched = true;
 
@@ -34,6 +34,7 @@ public class ShortTile : TileBase, ITilePoint
         TileShake();
         ChangeTheSprite();
         ScoreManager.Instance.AddScore(Point, reactionTime);
+        LightDecor.Instance.ChangeLightContrast();
     }
 
     protected override void ChangeTheSprite()

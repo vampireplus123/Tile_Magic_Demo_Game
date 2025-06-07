@@ -1,10 +1,10 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class TileManager : MonoBehaviour
 {
     public static TileManager Instance;
+
     public GameObject tilePrefab;
     private Queue<GameObject> tilePool = new Queue<GameObject>();
     public List<SpawnPoint> spawnPoints;
@@ -20,6 +20,7 @@ public class TileManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         if (spawnPoints == null || spawnPoints.Count == 0)
@@ -52,7 +53,14 @@ public class TileManager : MonoBehaviour
 
     public void ReturnTile(GameObject tile)
     {
+        var tileBase = tile.GetComponent<TileBase>();
+        if (tileBase != null)
+        {
+            tileBase.ResetState();
+        }
+
         tile.SetActive(false);
         tilePool.Enqueue(tile);
     }
+
 }

@@ -15,12 +15,32 @@ public abstract class TileBase : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         SpriteCheckFirstly();
     }
+
+    public virtual void ResetState()
+    {
+        isTouched = false;
+        if (spriteRenderer != null && OriginalSprite != null)
+        {
+            spriteRenderer.sprite = OriginalSprite;
+        }
+
+        if (ParticleObject != null && ParticleObject.isPlaying)
+        {
+            ParticleObject.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+        transform.localScale = Vector3.one;
+    }
+
     protected virtual void TileMove() { }
     protected virtual void ChangeTheSprite() { }
     protected virtual void TileShake() { }
-    
+
     private void SpriteCheckFirstly()
     {
         if (spriteRenderer.sprite != null && OriginalSprite != null && NewSprite != null)
@@ -28,7 +48,6 @@ public abstract class TileBase : MonoBehaviour
             Debug.Log("Sprite Had");
         }
         Debug.Log("Sprite Check Once Again");
-        return;
     }
-    
 }
+
