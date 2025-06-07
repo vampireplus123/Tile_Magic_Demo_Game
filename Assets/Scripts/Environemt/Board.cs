@@ -10,6 +10,5 @@ public class Board : MonoBehaviour
             Debug.Log("Touched Board");
             GameController.Instance.GameOver("Touch The Board");
         }
-        // Debug.Log("Touched Board");
     }
 }
