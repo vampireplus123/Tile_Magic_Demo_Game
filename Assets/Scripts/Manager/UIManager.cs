@@ -5,17 +5,17 @@ using UnityEngine.UI;  // Thư viện UI
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; set; }
-    public TextMeshProUGUI scoreText; //Điểm
-    public TextMeshProUGUI feedbackText; // Feedback
-    public TextMeshProUGUI EndGameText; // Endgme
-    public Button startButton; // Bắt đầu chơi
-    public GameObject gameOverPanel; // Kết thúc Panel
+    public TextMeshProUGUI scoreText; 
+    public TextMeshProUGUI feedbackText; 
+    public TextMeshProUGUI EndGameText; 
+    public Button startButton; 
+    public GameObject gameOverPanel; 
 
-    public Slider checkpointSlider; // Slider hiển thị checkpoint
-    public Image[] checkpointStars; // Các ngôi sao checkpoint
+    public Slider checkpointSlider; 
+    public Image[] checkpointStars; 
 
     private int score = 0;
-    private int maxScore = 1000; // Điểm tối đa để đạt checkpoint cuối
+    private int maxScore = 1000; 
 
     void Awake()
     {
@@ -100,7 +100,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    //Thay đổi feedback
     public void ShowFeedback(string feedbackMessage, float duration = 0.2f)
     {
         if (!string.IsNullOrEmpty(feedbackMessage))
@@ -114,12 +113,10 @@ public class UIManager : MonoBehaviour
             feedbackText.gameObject.SetActive(false);
         }
     }
-    //Ẩn feedback
     private void HideFeedback()
     {
         feedbackText.gameObject.SetActive(false);
     }
-    //Show lí do thất bại
     public void ShowReasonEnd(string feedbackMessage)
     {
         if (!string.IsNullOrEmpty(feedbackMessage))
@@ -133,11 +130,6 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         ShowReasonEnd(ReasonOver);
-        startButton.interactable = true;
-    }
-    //Kêt thúc game
-    public void EndGame()
-    {
         startButton.interactable = true;
     }
 }
