@@ -9,7 +9,7 @@ public abstract class TileBase : MonoBehaviour
     [SerializeField] protected Sprite NewSprite;
     [SerializeField] protected float shakeIntensity = 0.1f;
     [SerializeField] protected float shakeDuration = 0.2f;
-    [SerializeField] protected float fallSpeed = 5f;
+    [SerializeField] protected float fallSpeed = 0.05f;
     [SerializeField] protected ParticleSystem ParticleObject;
     protected SpriteRenderer spriteRenderer;
 
@@ -30,6 +30,10 @@ public abstract class TileBase : MonoBehaviour
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
         transform.localScale = Vector3.one;
+    }
+    public void SetFallSpeed(float NewFallSpeed)
+    {
+        fallSpeed = NewFallSpeed;
     }
 
     protected virtual void TileMove() { }

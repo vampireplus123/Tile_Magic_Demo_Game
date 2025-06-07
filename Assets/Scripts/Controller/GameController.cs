@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public bool isPlayerWin;
     public AudioClip backgroundMusic;
     private AudioSource audioSource;
-    public float beatInterval = 0.5f;
+    public float beatInterval = 0.05f;
     private Coroutine spawnRoutine;
 
     void Awake()
@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
         audioSource.Play();
         spawnRoutine = StartCoroutine(SpawnTiles());
         StartCoroutine(CheckMusicEnd());
+        StartCoroutine(IncreaseGameSpeed());
     }
 
     public void GameOver(string reason)
@@ -65,6 +66,21 @@ public class GameController : MonoBehaviour
         }
         Debug.Log("Win!!!");
         isGameRunning = false;
+    }
+
+    private void SpawnTile()
+    {
+        int randomIndex = Random.Range(0, TileManager.Instance.spawnPoints.Count);
+        Vector3 spawnPos = TileManager.Instance.spawnPoints[randomIndex].transform.position;
+
+        GameObject tile = TileManager.Instance.GetTile();
+        TileBase tileBase = tile.GetComponent<TileBase>();
+        if (tileBase != null)
+        {
+            tileBase.SetFallSpeed(gameSpeed * 0.05f);
+        }
+        tile.transform.position = spawnPos;
+        tile.SetActive(true);
     }
 
     IEnumerator CheckMusicEnd()
@@ -85,14 +101,9 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(beatInterval);
         }
     }
-
-    private void SpawnTile()
+    IEnumerator IncreaseGameSpeed()
     {
-        int randomIndex = Random.Range(0, TileManager.Instance.spawnPoints.Count);
-        Vector3 spawnPos = TileManager.Instance.spawnPoints[randomIndex].transform.position;
-
-        GameObject tile = TileManager.Instance.GetTile();
-        tile.transform.position = spawnPos;
-        tile.SetActive(true); 
+        gameSpeed *= gameSpeed / backgroundMusic.length;
+        yield return new WaitForSeconds(2f);
     }
 }
