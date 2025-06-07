@@ -55,18 +55,16 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         score = 0;
         UpdateSlider();
-        ResetCheckpointStars(); // Đặt lại ngôi sao
-        // GameController.Instance.StartGame();
+        ResetCheckpointStars(); 
+        GameController.Instance.GameStart();
     }
-    //Thay đổi điểm
     public void UpdateScore(int value)
     {
         score = value;
         scoreText.text = score.ToString(); 
         UpdateSlider();
-        UpdateCheckpointStars(); // Cập nhật hiển thị ngôi sao
+        UpdateCheckpointStars(); 
     }
-    //Thay đổi giá trị Slider
 
     private void UpdateSlider()
     {
@@ -75,7 +73,7 @@ public class UIManager : MonoBehaviour
             checkpointSlider.value = score;
         }
     }
-    // Bật tắt các Star Check Points
+   
     private void UpdateCheckpointStars()
     {
         if (checkpointStars != null && checkpointStars.Length > 0)
@@ -89,14 +87,13 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    //Reset lại Check Point
     private void ResetCheckpointStars()
     {
         if (checkpointStars != null)
         {
             foreach (var star in checkpointStars)
             {
-                star.enabled = false; // Tắt tất cả các ngôi sao
+                star.enabled = false;
             }
         }
     }
@@ -125,8 +122,7 @@ public class UIManager : MonoBehaviour
             EndGameText.gameObject.SetActive(true);
         }
     }
-    //Hiện bảng game over
-    public void ShowGameOver(string ReasonOver)
+    public void ShowGameOverPanel(string ReasonOver)
     {
         gameOverPanel.SetActive(true);
         ShowReasonEnd(ReasonOver);
