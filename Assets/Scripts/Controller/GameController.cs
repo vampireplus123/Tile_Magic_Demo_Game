@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
     public bool isGameRunning;
     public bool isPlayerWin;
     public AudioClip backgroundMusic;
-
     private AudioSource audioSource;
 
     void Awake()
@@ -28,7 +27,7 @@ public class GameController : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = backgroundMusic;
-        
+        Debug.Log(backgroundMusic.length);
     }
 
     void Update()
@@ -57,7 +56,6 @@ public class GameController : MonoBehaviour
     
     private void ChangeGameState(bool PlayerState)
     {
-
         if (!PlayerState)
         {
             Debug.Log("Loose!!");
@@ -69,7 +67,6 @@ public class GameController : MonoBehaviour
     IEnumerator CheckMusicEnd()
     {
         yield return new WaitForSeconds(backgroundMusic.length);
-
         if (isGameRunning)
         {
             isPlayerWin = true;
