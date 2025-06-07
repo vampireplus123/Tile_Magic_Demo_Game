@@ -6,7 +6,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; set; }
     public TextMeshProUGUI scoreText; 
-    public TextMeshProUGUI feedbackText; 
+    public TextMeshProUGUI feedbackText;
+    public TextMeshProUGUI GameOverText; 
     public Button startButton; 
     public GameObject gameOverPanel; 
 
@@ -66,7 +67,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShowReasonEnd(string feedbackMessage)
     {
-        
+        GameOverText.text = feedbackMessage;
     }
     public void ShowGameOverPanel(string ReasonOver)
     {

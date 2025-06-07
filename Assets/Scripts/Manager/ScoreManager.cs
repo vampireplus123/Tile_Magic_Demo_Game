@@ -25,7 +25,6 @@ public class ScoreManager : MonoBehaviour
         Debug.Log($"Reaction Time: {reactionTime}, Base Point: {basePoint}, Multiplier: {multiplier}, Total: {totalPoint}, New Score: {score}");
         UIManager.Instance.UpdateScore(score);
         UIManager.Instance.ShowFeedback(GetFeedback(multiplier));
-
     }
 
     private float GetMultiplier(float reactionTime)
@@ -47,16 +46,5 @@ public class ScoreManager : MonoBehaviour
             default:
                 return "Nice!";
         }
-    }
-
-    public int GetScore()
-    {
-        return score;
-    }
-
-    public void ResetScore()
-    {
-        score = 0;
-        UIManager.Instance.UpdateScore(score);
     }
 }

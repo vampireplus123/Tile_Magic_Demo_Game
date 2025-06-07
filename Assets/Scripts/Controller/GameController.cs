@@ -56,6 +56,7 @@ public class GameController : MonoBehaviour
         isGameRunning = false;
         Debug.Log(reason);
         audioSource.Stop();
+        UIManager.Instance.ShowGameOverPanel(reason);
     }
 
     private void ChangeGameState(bool PlayerState)
