@@ -7,6 +7,7 @@
     - Kéo `TileManager` và gán `tilePrefab`, cấu hình số lượng pool.
     - Chuẩn bị UI canvas với các thành phần `scoreText`, `feedbackText`, `gameOverPanel`, `startButton`.
 3. **Chạy game**:  
+    - Mở Demo scene
     - Nhấn nút Start để bắt đầu.
     - Nhấn vào các tile rơi xuống để ghi điểm.
 4. **Điểm số** được tính theo công thức: `BasePoint * Multiplier`, với multiplier phụ thuộc vào thời gian phản ứng.
