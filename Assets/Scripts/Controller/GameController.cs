@@ -98,7 +98,7 @@ public class GameController : MonoBehaviour
     {
         while (isGameRunning)
         {
-            SpawnTile(); // Gọi spawn ở đây
+            SpawnTile(); 
             yield return new WaitForSeconds(beatInterval);
         }
     }
