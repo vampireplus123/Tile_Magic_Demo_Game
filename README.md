@@ -2,7 +2,7 @@
 ## Hướng dẫn sử dụng
 
 1. **Mở project bằng Unity** (phiên bản 2021.3.x hoặc mới hơn được khuyến nghị).
-2. **Chuẩn bị scene chính**: Các prefabs đã có sẵn trong thư mực prefabs
+2. **Chuẩn bị scene chính**: Các prefabs đã có sẵn trong thư mục prefabs
     - Thêm các `SpawnPoint` để tile có thể xuất hiện.
     - Kéo `TileManager` và gán `tilePrefab`, cấu hình số lượng pool.
     - Chuẩn bị UI canvas với các thành phần `scoreText`, `feedbackText`, `gameOverPanel`, `startButton`.
