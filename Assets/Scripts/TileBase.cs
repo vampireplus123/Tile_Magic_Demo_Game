@@ -10,7 +10,7 @@ public abstract class TileBase : MonoBehaviour
     [SerializeField] protected float shakeIntensity = 0.1f;
     [SerializeField] protected float shakeDuration = 0.2f;
     [SerializeField] protected float fallSpeed = 5f;
-    [SerializeField] protected GameObject ParticleObject;
+    [SerializeField] protected ParticleSystem ParticleObject;
     protected SpriteRenderer spriteRenderer;
 
     void Start()

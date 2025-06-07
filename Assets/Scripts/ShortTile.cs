@@ -41,6 +41,7 @@ public class ShortTile : TileBase, ITilePoint
         if (spriteRenderer.sprite == OriginalSprite)
         {
             spriteRenderer.sprite = NewSprite;
+            ParticleObject.Play();
         }
     }
 
