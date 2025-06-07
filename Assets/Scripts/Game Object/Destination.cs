@@ -11,6 +11,7 @@ public class Destination : MonoBehaviour
             if (tile.isTouched)
             {
                 Debug.Log("Tile đã được nhấn và đã vượt qua điểm đích. Trả tile về pool.");
+                TileManager.Instance.ReturnTile(tile.gameObject);
             }
             else
             {
