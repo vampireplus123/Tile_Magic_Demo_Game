@@ -29,12 +29,8 @@
 - Thêm âm thanh và hiệu ứng hình ảnh để tăng trải nghiệm người chơi.
 
 ## Yêu cầu
-- Unity 2020 trở lên.
-- .NET 4.x hoặc tương thích.
+- Unity 2021.3.x
 - TextMeshPro (đã tích hợp sẵn trong Unity).
-
-## Liên hệ
-Nếu bạn có câu hỏi hoặc góp ý, hãy mở issue hoặc liên hệ qua email: your-email@example.com
 
 ---
 
