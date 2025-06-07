@@ -16,6 +16,7 @@ public abstract class TileBase : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        ParticleObject = GetComponent<ParticleSystem>();
         SpriteCheckFirstly();
     }
 
@@ -26,12 +27,6 @@ public abstract class TileBase : MonoBehaviour
         {
             spriteRenderer.sprite = OriginalSprite;
         }
-
-        if (ParticleObject != null && ParticleObject.isPlaying)
-        {
-            ParticleObject.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        }
-
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
         transform.localScale = Vector3.one;

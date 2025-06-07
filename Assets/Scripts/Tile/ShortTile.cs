@@ -30,7 +30,7 @@ public class ShortTile : TileBase, ITilePoint
         isTouched = true;
 
         float reactionTime = Time.time - spawnTime;
-
+        ParticleObject.Play();
         TileShake();
         ChangeTheSprite();
         ScoreManager.Instance.AddScore(Point, reactionTime);
@@ -42,7 +42,6 @@ public class ShortTile : TileBase, ITilePoint
         if (spriteRenderer.sprite == OriginalSprite)
         {
             spriteRenderer.sprite = NewSprite;
-            ParticleObject.Play();
         }
     }
 
